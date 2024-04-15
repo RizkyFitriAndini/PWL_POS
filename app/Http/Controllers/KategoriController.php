@@ -6,6 +6,7 @@ use App\DataTables\KategoriDataTable;
 use App\Models\KategoriModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class KategoriController extends Controller
 {
@@ -25,4 +26,25 @@ class KategoriController extends Controller
         ]);
         return redirect('/kategori');
     }
+    public function ubah($id)
+    {
+        $kategori = KategoriModel::find($id);
+        return view('/kategori/edit', ['data' => $kategori]);
+    }
+    public function ubah_simpan($id, Request $request)
+    {
+        KategoriModel::find($id)->update([
+            'kategori_kode' => $request->kodeKategori,
+            'kategori_nama' => $request->namaKategori
+        ]);
+        return redirect('/kategori');
+    }
+    public function hapus($id)
+    {
+        $kategori = KategoriModel::find($id);
+        $kategori->delete();
+
+        return redirect('/kategori');
+    }
+
 }
