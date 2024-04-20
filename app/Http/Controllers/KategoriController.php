@@ -20,10 +20,10 @@ class KategoriController extends Controller
     }
     public function store(Request $request)
     {
-        KategoriModel::create([
-            'kategori_kode' => $request->kodeKategori,
-            'kategori_nama' => $request->namaKategori,
-        ]);
+        // KategoriModel::create([
+        //     'kategori_kode' => $request->kodeKategori,
+        //     'kategori_nama' => $request->namaKategori,
+        // ]);
         return redirect('/kategori');
     }
     public function ubah($id)
