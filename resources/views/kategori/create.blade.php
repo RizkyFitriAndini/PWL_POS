@@ -1,7 +1,5 @@
 @extends('layout.app')
 
-{{-- Customize layout sections --}}
-
 @section('subtitle', 'Kategori')
 @section('content_header_title', 'Kategori')
 @section('content_header_subtitle', 'Create')
