@@ -1,9 +1,10 @@
-@extends('m_user/template')
+@extends('layout.app')
+@section('subtitle', 'User')
+@section('content_header_title', 'CRUD User')
 @section('content')
-    <div class="row mt-5 mb-5">
+    <div class="row mt-3 mb-3">
         <div class="col-lg-12 margin-tb">
             <div class="float-left">
-                <h2>CRUD user</h2>
             </div>
             <div class="float-right">
                 <a class="btn btn-success" href="{{ route('m_user.create') }}"> Input User</a>
@@ -19,9 +20,10 @@
         <tr>
             <th width="20px" class="text-center">User id</th>
             <th width="150px" class="text-center">Level id</th>
-            <th width="200px"class="text-center">username</th>
-            <th width="200px"class="text-center">nama</th>
-            <th width="150px"class="text-center">password</th>
+            <th width="200px"class="text-center">Username</th>
+            <th width="200px"class="text-center">Nama</th>
+            <th width="150px"class="text-center">Password</th>
+            <th width="150px"class="text-center">Action</th>
         </tr>
         @foreach ($useri as $m_user)
             <tr>
