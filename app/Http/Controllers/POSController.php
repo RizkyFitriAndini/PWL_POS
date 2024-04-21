@@ -13,8 +13,7 @@ class POSController extends Controller
      */
     public function index()
     {
-        //fungsi eloquent menampilkan data menggunakan pagination
-        $useri = m_user::all(); // Mengambil semua isi tabel
+        $useri = m_user::all(); 
         return view('m_user.index', compact('useri'))->with('i');
     }
 
@@ -34,14 +33,12 @@ class POSController extends Controller
      */
     public function store(Request $request)
     {
-        //melakukan validasi data
         $request->validate([
             'user_id' => 'max 20',
             'username' => 'required',
             'nama' => 'required',
 
         ]);
-        //fungsi eloquent untuk menambah data
         m_user::create($request->all());
 
         return redirect()->route('m_user.index')
@@ -77,9 +74,7 @@ class POSController extends Controller
             'nama' => 'required',
             'password' => 'required',
         ]);
-        //fungsi eloquent untuk mengupdate data inputan kita
         m_user::find($id)->update($request->all());
-        //jika data berhasil diupdate, akan kembali ke halaman utama
         return redirect()->route('m_user.index')
             ->with('success', 'Data Berhasil Diupdate');
     }
