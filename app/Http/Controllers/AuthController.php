@@ -54,7 +54,7 @@ class AuthController extends Controller
 
     public function proses_register(Request $request)
     {
-        $validator = Validator::make($request->al1(), [
+        $validator = Validator::make($request->all(), [
             'nama' => 'required',
             'username' => 'required|unique:m_user',
             'password' => 'required'
@@ -63,13 +63,12 @@ class AuthController extends Controller
             return redirect('/register')
                 ->withErrors($validator)
                 ->withInput();
-
+        }
             $request['level_id'] = '2';
             $request['password'] = Hash::make($request->password);
 
             UserModel::create($request->all());
             return redirect()->route('login');
-        }
     }
 
     public function logout(Request $request)
