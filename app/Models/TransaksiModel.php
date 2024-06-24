@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,19 +19,15 @@ class TransaksiModel extends Model
         'user_id',
         'pembeli',
         'penjualan_kode',
-        'penjualan_tanggal'
+        'penjualan_tanggal',
+        'image'
     ];
 
-    // relationship with user
-    public function user()
+    protected function image(): Attribute
     {
-        return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
-    }
-
-    // relationship with detail penjualan
-    public function detail_penjualan()
-    {
-        return $this->hasMany(TransaksiDetailModel::class, 'penjualan_id', 'penjualan_id');
+        return Attribute::make(
+            get: fn ($image) => url('/storage/posts/' . $image),
+        );
     }
 
 
