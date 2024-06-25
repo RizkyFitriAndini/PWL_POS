@@ -9,6 +9,10 @@ class FileUploadController extends Controller
     public function fileUpload() {
         return view('file-upload');
     }
+    public function fileUploadRename() 
+    {
+      return view('file-upload-rename');
+    }
     public function prosesFileUpload(Request $request) {
         $request->validate([
             'berkas'=>'required|file|image|max:500',]);
