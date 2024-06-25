@@ -6,13 +6,13 @@
             <div class="card-tools"></div>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ url('user') }}" class="form-horizontal">
+            <form method="POST" action="{{ url('user') }}" class="form-horizontal" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">
                     <label class="col-1 control-label col-form-label">Level</label>
                     <div class="col-11">
                         <select class="form-control" id="level_id" name="level_id" required>
-                            <option value="">Pilih Level</option>
+                            <option value="">- Pilih Level -</option>
                             @foreach ($level as $item)
                                 <option value="{{ $item->level_id }}">{{ $item->level_nama }}</option>
                             @endforeach
@@ -47,6 +47,15 @@
                     <div class="col-11">
                         <input type="password" class="form-control" id="password" name="password" required>
                         @error('password')
+                            <small class="form-text text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-1 control-label col-form-label">Photo Profile</label>
+                    <div class="col-11">
+                        <input type="file" class="form-control" id="image" name="image" required>
+                        @error('image')
                             <small class="form-text text-danger">{{ $message }}</small>
                         @enderror
                     </div>

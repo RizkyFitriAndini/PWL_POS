@@ -12,7 +12,14 @@
                     Data yang Anda cari tidak ditemukan.
                 </div>
             @else
-                <table class="table table-bordered table-striped table-hover tablesm">
+                <table class="table table-bordered table-striped table-hover table-sm">
+                    <tr>
+                        <th>Photo Profile</th>
+                        <td>
+                            {{ basename($user->image) }}<br>
+                            <img src="{{ asset($user->image) }}" alt="Profile photo of {{ $user->name }}" style="margin-top: 10px;">
+                        </td>
+                    </tr>
                     <tr>
                         <th>ID</th>
                         <td>{{ $user->user_id }}</td>
@@ -41,6 +48,11 @@
     </div>
 @endsection
 @push('css')
+<style>
+    img {
+        width: 15vw;
+    }
+</style>
 @endpush
 @push('js')
 @endpush
